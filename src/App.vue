@@ -7,6 +7,30 @@
         :key="division.id"
         :teams="division.teams"
       />
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="home">Home Team:</label>
+            <select class="form-control" id="home">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="away">Aways Team:</label>
+            <select class="form-control" id="away">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="jumbotron">
+    <div class="container">
       <heading/>
       <division
         v-for="division in divisions"

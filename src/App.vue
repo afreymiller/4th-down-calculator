@@ -28,19 +28,73 @@ export default {
       divisions: [{
         id: 1,
         teams: [
-          {name: 'Vikings'},
           {name: 'Bears'},
           {name: 'Lions'},
-          {name: 'Packers'}
+          {name: 'Packers'},
+          {name: 'Vikings'}
         ],
       },
       { 
         id: 2,
         teams: [
-          {name: 'Vikings'},
+          {name: '49ers'},
+          {name: 'Cardinals'},
+          {name: 'Rams'},
+          {name: 'Seahawks'}
+        ]
+      },
+      {
+        id: 3,
+        teams: [
+          {name: 'Cowboys'},
+          {name: 'Eagles'},
+          {name: 'Giants'},
+          {name: 'Washington'}
+        ]
+      },
+      {
+        id: 4,
+        teams: [
+          {name: 'Buccaneers'},
+          {name: 'Falcons'},
+          {name: 'Panthers'},
+          {name: 'Saints'}
+        ]
+      },
+      {
+        id: 5,
+        teams: [
           {name: 'Bears'},
           {name: 'Lions'},
-          {name: 'Packers'}
+          {name: 'Packers'},
+          {name: 'Vikings'}
+        ],
+      },
+      { 
+        id: 6,
+        teams: [
+          {name: '49ers'},
+          {name: 'Cardinals'},
+          {name: 'Rams'},
+          {name: 'Seahawks'}
+        ]
+      },
+      {
+        id: 7,
+        teams: [
+          {name: 'Cowboys'},
+          {name: 'Eagles'},
+          {name: 'Giants'},
+          {name: 'Washington'}
+        ]
+      },
+      {
+        id: 8,
+        teams: [
+          {name: 'Buccaneers'},
+          {name: 'Falcons'},
+          {name: 'Panthers'},
+          {name: 'Saints'}
         ]
       }]
     }

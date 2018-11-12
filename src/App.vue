@@ -11,23 +11,31 @@
         <div class="col">
           <div class="form-group">
             <label for="home">Home Team:</label>
-            <select class="form-control" id="home">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
+            <select v-model="homeSelected">
+              <option 
+                v-for="team in teamCodes"
+                :key="team.name"
+                :value="team.name"
+              >
+                {{ team.name }}
+              </option>
             </select>
+            <p>{{ homeSelected }}</p>
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="away">Aways Team:</label>
-            <select class="form-control" id="away">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
+            <select v-model="awaySelected">
+              <option 
+                v-for="team in teamCodes"
+                :key="team.name"
+                :value="team.name"
+              >
+                {{ team.name }}
+              </option>
             </select>
+            <p>{{ awaySelected }}</p>
           </div>
         </div>
       </div>
@@ -49,6 +57,40 @@ export default {
   },
   data () {
     return {
+      teamCodes: [
+        {name: 'CHI'},
+        {name: 'DET'},
+        {name: 'GB'},
+        {name: 'MIN'},
+        {name: 'SF'},
+        {name: 'ARI'},
+        {name: 'LAR'},
+        {name: 'SEA'},
+        {name: 'DAL'},
+        {name: 'PHI'},
+        {name: 'NYG'},
+        {name: 'WAS'},
+        {name: 'TB'},
+        {name: 'ATL'},
+        {name: 'CAR'},
+        {name: 'NO'},
+        {name: 'IND'},
+        {name: 'TEN'},
+        {name: 'JAX'},
+        {name: 'HOU'},
+        {name: 'NE'},
+        {name: 'MIA'},
+        {name: 'BUF'},
+        {name: 'NYJ'},
+        {name: 'DEN'},
+        {name: 'OAK'},
+        {name: 'KC'},
+        {name: 'LAC'},
+        {name: 'BAL'},
+        {name: 'PIT'},
+        {name: 'CLE'},
+        {name: 'CIN'}
+      ],
       divisions: [{
         id: 1,
         teams: [

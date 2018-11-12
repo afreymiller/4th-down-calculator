@@ -1,21 +1,24 @@
 <template>
   <div id="app">
-    <heading/>
+    <div class="jumbotron">
+      <h1>My First Bootstrap Page</h1>
+      <p>This is some text.</p> 
+    </div>
   </div>
 </template>
 
 <script>
-import Heading from './components/Heading.vue'
-
 export default {
   name: 'app',
-  components: {
-    Heading
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,5 +26,23 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+a {
+  color: #42b983;
 }
 </style>

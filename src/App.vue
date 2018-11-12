@@ -2,33 +2,48 @@
   <div id="app">
     <div class="jumbotron">
       <heading/>
-      <div class="row">
-        <div class="col">
-          <team-card/>
-        </div>
-        <div class="col">
-          <team-card/>
-        </div>
-        <div class="col">
-          <team-card/>
-        </div>
-        <div class="col">
-          <team-card/>
-        </div>
-      </div>
+      <division
+        v-for="division in divisions"
+        :key="division.id"
+        :teams="division.teams"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import Division from './components/Division.vue'
 import Heading from './components/Heading.vue'
 import TeamCard from './components/TeamCard.vue'
 
 export default {
   name: 'app',
   components: {
+    Division,
     Heading,
     TeamCard
+  },
+  data () {
+    return {
+      divisions: [{
+        id: 1,
+        teams: [
+          {name: 'Vikings'},
+          {name: 'Bears'},
+          {name: 'Lions'},
+          {name: 'Packers'}
+        ],
+      },
+      { 
+        id: 2,
+        teams: [
+          {name: 'Vikings'},
+          {name: 'Bears'},
+          {name: 'Lions'},
+          {name: 'Packers'}
+        ]
+      }]
+    }
   }
 }
 </script>

@@ -28,73 +28,73 @@ export default {
       divisions: [{
         id: 1,
         teams: [
-          {name: 'Bears'},
-          {name: 'Lions'},
-          {name: 'Packers'},
-          {name: 'Vikings'}
+          {name: 'CHI'},
+          {name: 'DET'},
+          {name: 'GB'},
+          {name: 'MIN'}
         ],
       },
       { 
         id: 2,
         teams: [
-          {name: '49ers'},
-          {name: 'Cardinals'},
-          {name: 'Rams'},
-          {name: 'Seahawks'}
+          {name: 'SF'},
+          {name: 'ARI'},
+          {name: 'LAR'},
+          {name: 'SEA'}
         ]
       },
       {
         id: 3,
         teams: [
-          {name: 'Cowboys'},
-          {name: 'Eagles'},
-          {name: 'Giants'},
-          {name: 'Washington'}
+          {name: 'DAL'},
+          {name: 'PHI'},
+          {name: 'NYG'},
+          {name: 'WAS'}
         ]
       },
       {
         id: 4,
         teams: [
-          {name: 'Buccaneers'},
-          {name: 'Falcons'},
-          {name: 'Panthers'},
-          {name: 'Saints'}
+          {name: 'TB'},
+          {name: 'ATL'},
+          {name: 'CAR'},
+          {name: 'NO'}
         ]
       },
       {
         id: 5,
         teams: [
-          {name: 'Bears'},
-          {name: 'Lions'},
-          {name: 'Packers'},
-          {name: 'Vikings'}
+          {name: 'IND'},
+          {name: 'TEN'},
+          {name: 'JAX'},
+          {name: 'HOU'}
         ],
       },
       { 
         id: 6,
         teams: [
-          {name: '49ers'},
-          {name: 'Cardinals'},
-          {name: 'Rams'},
-          {name: 'Seahawks'}
+          {name: 'NE'},
+          {name: 'MIA'},
+          {name: 'BUF'},
+          {name: 'NYJ'}
         ]
       },
       {
         id: 7,
         teams: [
-          {name: 'Cowboys'},
-          {name: 'Eagles'},
-          {name: 'Giants'},
-          {name: 'Washington'}
+          {name: 'DEN'},
+          {name: 'OAK'},
+          {name: 'KC'},
+          {name: 'LAC'}
         ]
       },
       {
         id: 8,
         teams: [
-          {name: 'Buccaneers'},
-          {name: 'Falcons'},
-          {name: 'Panthers'},
-          {name: 'Saints'}
+          {name: 'BAL'},
+          {name: 'PIT'},
+          {name: 'CLE'},
+          {name: 'CIN'}
         ]
       }]
     }

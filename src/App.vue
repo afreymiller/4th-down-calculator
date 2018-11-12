@@ -2,22 +2,33 @@
   <div id="app">
     <div class="jumbotron">
       <heading/>
+      <div class="row">
+        <div class="col">
+          <team-card/>
+        </div>
+        <div class="col">
+          <team-card/>
+        </div>
+        <div class="col">
+          <team-card/>
+        </div>
+        <div class="col">
+          <team-card/>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Heading from './components/Heading.vue'
+import TeamCard from './components/TeamCard.vue'
 
 export default {
   name: 'app',
   components: {
-    Heading
-  },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+    Heading,
+    TeamCard
   }
 }
 </script>

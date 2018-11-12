@@ -1,15 +1,19 @@
 <template>
   <div id="app">
     <div class="jumbotron">
-      <h1>My First Bootstrap Page</h1>
-      <p>This is some text.</p> 
+      <heading/>
     </div>
   </div>
 </template>
 
 <script>
+import Heading from './components/Heading.vue'
+
 export default {
   name: 'app',
+  components: {
+    Heading
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

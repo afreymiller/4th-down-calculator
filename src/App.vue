@@ -300,103 +300,153 @@ export default {
         },
         {
           name: 'CLE',
-          division: 1
+          division: 1,
+          offYPP: 4.9,
+          defYPP: 6.2
         },
         {
           name: 'DAL',
-          division: 2
+          division: 2,
+          offYPP: 5.6,
+          defYPP: 5.8
         },
         {
           name: 'DEN',
-          division: 2
+          division: 2,
+          offYPP: 4.2,
+          defYPP: 3.2
         },
         {
           name: 'DET',
-          division: 2
+          division: 2,
+          offYPP: 5.6,
+          defYPP: 5.2
         },
         {
           name: 'GB',
-          division: 2
+          division: 2,
+          offYPP: 5.8,
+          defYPP: 7.1
         },
         {
           name: 'HOU',
-          division: 2
+          division: 2,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'IND',
-          division: 2
+          division: 2,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'JAX',
-          division: 2
+          division: 2,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'KC',
-          division: 2
+          division: 2,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'LAC',
-          division: 3
+          division: 3,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'LAR',
-          division: 3
+          division: 3,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'MIA',
-          division: 3
+          division: 3,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'MIN',
-          division: 3
+          division: 3,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'NE',
-          division: 3
+          division: 3,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'NO',
-          division: 3
+          division: 3,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'NYG',
-          division: 3
+          division: 3,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'NYJ',
-          division: 3
+          division: 3,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'OAK',
-          division: 4
+          division: 4,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'PHI',
-          division: 4
+          division: 4,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'PIT',
-          division: 4
+          division: 4,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'SEA',
-          division: 4
+          division: 4,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'SF',
-          division: 4
+          division: 4,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'TB',
-          division: 4
+          division: 4,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'TEN',
-          division: 4
+          division: 4,
+          offYPP: 5.9,
+          defYPP: 4.1
         },
         {
           name: 'WAS',
-          division: 4
+          division: 4,
+          offYPP: 5.9,
+          defYPP: 4.1
         }
       ]
     }

@@ -2,16 +2,16 @@
   <div id="app">
     <div class="container">
       <heading/>
-      <division
+      <team-row
         :teams="teams.filter(e => e.division === 1)"
       />
-      <division
+      <team-row
         :teams="teams.filter(e => e.division === 2)"
       />
-      <division
+      <team-row
         :teams="teams.filter(e => e.division === 3)"
       />
-      <division
+      <team-row
         :teams="teams.filter(e => e.division === 4)"
       />
       <!-- TODO: This whole row should be a component, probably several -->
@@ -81,14 +81,14 @@
 </template>
 
 <script>
-import Division from './components/Division.vue'
+import TeamRow from './components/TeamRow.vue'
 import Heading from './components/Heading.vue'
 import TeamCard from './components/TeamCard.vue'
 
 export default {
   name: 'app',
   components: {
-    Division,
+    TeamRow,
     Heading,
     TeamCard
   },

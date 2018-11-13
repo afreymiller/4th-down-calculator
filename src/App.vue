@@ -7,10 +7,11 @@
         :key="division.id"
         :teams="division.teams"
       />
-      <div class="row">
-        <div class="col-3">
+      <!-- TODO: This whole row should be a component, probably several -->
+      <div class="row justify-content-center">
+        <div class="col-2">
           <div class="form-group">
-            <label for="home">Home Team:</label>
+            <label for="home">Offense:</label>
             <select v-model="homeSelected">
               <option 
                 v-for="team in teamCodes"
@@ -22,9 +23,9 @@
             </select>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <div class="form-group">
-            <label for="away">Away Team:</label>
+            <label for="away">Defense:</label>
             <select v-model="awaySelected">
               <option 
                 v-for="team in teamCodes"
@@ -50,7 +51,7 @@
             </select>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <div class="form-group">
             <label for="yardsToGo">Yards to Go:</label>
             <select v-model="yardsToGo">
@@ -64,6 +65,11 @@
             </select>
           </div>
         </div>
+      </div>
+      <!-- TODO: This should be its own component -->
+      <div class="row">
+        {{ probabilityOfConversion }}
+        <p>You should probably punt, yeh plonker.</p>
       </div>
     </div>
   </div>
@@ -86,7 +92,7 @@ export default {
       homeSelected: 'CHI',
       awaySelected: 'CHI',
       yardLine: 'Midfield',
-      yardsToGo: '5',
+      yardsToGo: 5,
       yards: [
         {name: '1', value: 1},
         {name: '2', value: 2},
@@ -244,78 +250,88 @@ export default {
         id: 1,
         teams: [
           {
-            name: 'CHI', 
-            expP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}]},
-          {
-            name: 'DET'
+            name: 'ARI',
+            offYPP: 6.4,
+            defYPP: 6.6, 
+            offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
+            defEP: [{1: 1.2, 2: -0.1, 3: -0.4, 4: -1.0, 5: -1.2, 6: -1.7, 7: -2.0, 8: -2.5, 9: -2.9, 10: -3.3}]
           },
-          {name: 'GB'},
-          {name: 'MIN'}
+          {
+            name: 'ATL',
+            offYPP: 6.4,
+            defYPP: 6.6, 
+            offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
+            defEP: [{1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}]
+          },
+          {
+            name: 'BAL'
+          },
+          {name: 'BUF'},
+          {name: 'CAR'},
+          {name: 'CHI'},
+          {name: 'CIN'},
+          {name: 'CLE'}
         ],
       },
-      { 
+      {
         id: 2,
         teams: [
-          {name: 'SF'},
-          {name: 'ARI'},
-          {name: 'LAR'},
-          {name: 'SEA'}
+          {name: 'DAL'},
+          {name: 'DEN'},
+          {name: 'DET'},
+          {name: 'GB'},
+          {name: 'HOU'},
+          {name: 'IND'},
+          {name: 'JAX'},
+          {name: 'KC'}
         ]
       },
       {
         id: 3,
         teams: [
-          {name: 'DAL'},
-          {name: 'PHI'},
+          {name: 'LAC'},
+          {name: 'LAR'},
+          {name: 'MIA'},
+          {name: 'MIN'},
+          {name: 'NE'},
+          {name: 'NO'},
           {name: 'NYG'},
-          {name: 'WAS'}
-        ]
-      },
-      {
-        id: 4,
-        teams: [
-          {name: 'TB'},
-          {name: 'ATL'},
-          {name: 'CAR'},
-          {name: 'NO'}
-        ]
-      },
-      {
-        id: 5,
-        teams: [
-          {name: 'IND'},
-          {name: 'TEN'},
-          {name: 'JAX'},
-          {name: 'HOU'}
+          {name: 'NYJ'}
         ],
       },
       { 
-        id: 6,
+        id: 4,
         teams: [
-          {name: 'NE'},
-          {name: 'MIA'},
-          {name: 'BUF'},
-          {name: 'NYJ'}
-        ]
-      },
-      {
-        id: 7,
-        teams: [
-          {name: 'DEN'},
           {name: 'OAK'},
-          {name: 'KC'},
-          {name: 'LAC'}
-        ]
-      },
-      {
-        id: 8,
-        teams: [
-          {name: 'BAL'},
+          {name: 'PHI'},
           {name: 'PIT'},
-          {name: 'CLE'},
-          {name: 'CIN'}
+          {name: 'SEA'},
+          {name: 'SF'},
+          {name: 'TB'},
+          {name: 'TEN'},
+          {name: 'WAS'}
         ]
       }]
+    }
+  },
+  computed: {
+    probabilityOfConversion: function () {
+      return this.getPoissonMass(5.6, this.yardsToGo)
+    }
+  },
+  methods: {
+    factorial (n) {
+      let result = 1
+
+      while (n > 0) {
+        result *= n
+        n--
+      }
+
+      return result
+    },
+    getPoissonMass (lambda, k) {
+      return (Math.pow(Math.E, -lambda) * Math.pow(lambda, k)) / this.factorial(k)
     }
   }
 }

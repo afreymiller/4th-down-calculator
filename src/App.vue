@@ -263,30 +263,40 @@ export default {
         {
           name: 'ATL',
           division: 1,
-          offYPP: 6.4,
-          defYPP: 6.6, 
+          offYPP: 6.7,
+          defYPP: 6.0, 
           offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
           defEP: [{1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}]
         },
         {
           name: 'BAL',
-          division: 1
+          division: 1,
+          offYPP: 5.8,
+          defYPP: 5.2
         },
         {
           name: 'BUF',
-          division: 1
+          division: 1,
+          offYPP: 5.2,
+          defYPP: 7.1
         },
         {
           name: 'CAR',
-          division: 1
+          division: 1,
+          offYPP: 7.5,
+          defYPP: 4.3
         },
         {
           name: 'CHI',
-          division: 1
+          division: 1,
+          offYPP: 7.4,
+          defYPP: 5.6
         },
         {
           name: 'CIN',
-          division: 1
+          division: 1,
+          offYPP: 5.6,
+          defYPP: 8.1
         },
         {
           name: 'CLE',
@@ -393,7 +403,9 @@ export default {
   },
   computed: {
     probabilityOfConversion: function () {
-      return this.getPoissonMass(5.6, this.yardsToGo)
+      let [offense] = this.teams.filter(e => e.name === this.offenseSelected)
+      console.log(offense)
+      return this.getPoissonMass(offense.offYPP, this.yardsToGo)
     }
   },
   methods: {

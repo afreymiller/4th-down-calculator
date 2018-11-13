@@ -3,9 +3,16 @@
     <div class="container">
       <heading/>
       <division
-        v-for="division in divisions"
-        :key="division.id"
-        :teams="division.teams"
+        :teams="teams.filter(e => e.division === 1)"
+      />
+      <division
+        :teams="teams.filter(e => e.division === 2)"
+      />
+      <division
+        :teams="teams.filter(e => e.division === 3)"
+      />
+      <division
+        :teams="teams.filter(e => e.division === 4)"
       />
       <!-- TODO: This whole row should be a component, probably several -->
       <div class="row justify-content-center">
@@ -244,72 +251,144 @@ export default {
         {name: 'CLE'},
         {name: 'CIN'}
       ],
-      divisions: [{
-        id: 1,
-        teams: [
-          {
-            name: 'ARI',
-            offYPP: 6.4,
-            defYPP: 6.6, 
-            offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
-            defEP: [{1: 1.2, 2: -0.1, 3: -0.4, 4: -1.0, 5: -1.2, 6: -1.7, 7: -2.0, 8: -2.5, 9: -2.9, 10: -3.3}]
-          },
-          {
-            name: 'ATL',
-            offYPP: 6.4,
-            defYPP: 6.6, 
-            offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
-            defEP: [{1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}]
-          },
-          {
-            name: 'BAL'
-          },
-          {name: 'BUF'},
-          {name: 'CAR'},
-          {name: 'CHI'},
-          {name: 'CIN'},
-          {name: 'CLE'}
-        ],
-      },
-      {
-        id: 2,
-        teams: [
-          {name: 'DAL'},
-          {name: 'DEN'},
-          {name: 'DET'},
-          {name: 'GB'},
-          {name: 'HOU'},
-          {name: 'IND'},
-          {name: 'JAX'},
-          {name: 'KC'}
-        ]
-      },
-      {
-        id: 3,
-        teams: [
-          {name: 'LAC'},
-          {name: 'LAR'},
-          {name: 'MIA'},
-          {name: 'MIN'},
-          {name: 'NE'},
-          {name: 'NO'},
-          {name: 'NYG'},
-          {name: 'NYJ'}
-        ],
-      },
-      { 
-        id: 4,
-        teams: [
-          {name: 'OAK'},
-          {name: 'PHI'},
-          {name: 'PIT'},
-          {name: 'SEA'},
-          {name: 'SF'},
-          {name: 'TB'},
-          {name: 'TEN'},
-          {name: 'WAS'}
-        ]
-      }]
+      teams: [
+        {
+          name: 'ARI',
+          division: 1,
+          offYPP: 6.4,
+          defYPP: 6.6, 
+          offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
+          defEP: [{1: 1.2, 2: -0.1, 3: -0.4, 4: -1.0, 5: -1.2, 6: -1.7, 7: -2.0, 8: -2.5, 9: -2.9, 10: -3.3}]
+        },
+        {
+          name: 'ATL',
+          division: 1,
+          offYPP: 6.4,
+          defYPP: 6.6, 
+          offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
+          defEP: [{1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}]
+        },
+        {
+          name: 'BAL',
+          division: 1
+        },
+        {
+          name: 'BUF',
+          division: 1
+        },
+        {
+          name: 'CAR',
+          division: 1
+        },
+        {
+          name: 'CHI',
+          division: 1
+        },
+        {
+          name: 'CIN',
+          division: 1
+        },
+        {
+          name: 'CLE',
+          division: 1
+        },
+        {
+          name: 'DAL',
+          division: 2
+        },
+        {
+          name: 'DEN',
+          division: 2
+        },
+        {
+          name: 'DET',
+          division: 2
+        },
+        {
+          name: 'GB',
+          division: 2
+        },
+        {
+          name: 'HOU',
+          division: 2
+        },
+        {
+          name: 'IND',
+          division: 2
+        },
+        {
+          name: 'JAX',
+          division: 2
+        },
+        {
+          name: 'KC',
+          division: 2
+        },
+        {
+          name: 'LAC',
+          division: 3
+        },
+        {
+          name: 'LAR',
+          division: 3
+        },
+        {
+          name: 'MIA',
+          division: 3
+        },
+        {
+          name: 'MIN',
+          division: 3
+        },
+        {
+          name: 'NE',
+          division: 3
+        },
+        {
+          name: 'NO',
+          division: 3
+        },
+        {
+          name: 'NYG',
+          division: 3
+        },
+        {
+          name: 'NYJ',
+          division: 3
+        },
+        {
+          name: 'OAK',
+          division: 4
+        },
+        {
+          name: 'PHI',
+          division: 4
+        },
+        {
+          name: 'PIT',
+          division: 4
+        },
+        {
+          name: 'SEA',
+          division: 4
+        },
+        {
+          name: 'SF',
+          division: 4
+        },
+        {
+          name: 'TB',
+          division: 4
+        },
+        {
+          name: 'TEN',
+          division: 4
+        },
+        {
+          name: 'WAS',
+          division: 4
+        }
+      ]
     }
   },
   computed: {

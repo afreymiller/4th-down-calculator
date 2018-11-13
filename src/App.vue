@@ -454,8 +454,13 @@ export default {
   computed: {
     probabilityOfConversion: function () {
       let [offense] = this.teams.filter(e => e.name === this.offenseSelected)
-      console.log(offense)
-      return this.getPoissonMass(offense.offYPP, this.yardsToGo)
+      let [defense] = this.teams.filter(e => e.name === this.defenseSelected)
+
+      /* TODO: Get rid of this */
+      const LEAGUE_AVERAGE = 5.4
+
+      let lambda = (offense.offYPP * defense.defYPP) / LEAGUE_AVERAGE
+      return this.getPoissonRightTail(lambda, this.yardsToGo)
     }
   },
   methods: {
@@ -469,8 +474,19 @@ export default {
 
       return result
     },
-    getPoissonMass (lambda, k) {
+    getDiscretePoisson (lambda, k) {
       return (Math.pow(Math.E, -lambda) * Math.pow(lambda, k)) / this.factorial(k)
+    },
+    getPoissonRightTail (lambda, k) {
+      let mass = 0
+      k--
+
+      while (k >= 0) {
+        mass += this.getDiscretePoisson(lambda, k)
+        k--
+      }
+
+      return 1 - mass
     }
   }
 }

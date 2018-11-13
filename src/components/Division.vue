@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col"
       v-for="team in teams"
-      :key="team"
+      :key="team.name"
     >
       <team-card
       :name="team.name"

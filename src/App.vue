@@ -8,8 +8,8 @@
         :teams="division.teams"
       />
       <!-- TODO: This whole row should be a component, probably several -->
-      <div class="row">
-        <div class="col-3">
+      <div class="row justify-content-center">
+        <div class="col-2">
           <div class="form-group">
             <label for="home">Home Team:</label>
             <select v-model="homeSelected">
@@ -23,7 +23,7 @@
             </select>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <div class="form-group">
             <label for="away">Away Team:</label>
             <select v-model="awaySelected">
@@ -51,7 +51,7 @@
             </select>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <div class="form-group">
             <label for="yardsToGo">Yards to Go:</label>
             <select v-model="yardsToGo">
@@ -65,6 +65,13 @@
             </select>
           </div>
         </div>
+        <!-- <div class="col-1"> 
+          <button type="button" class="btn btn-success">Go!</button>
+        </div> -->
+      </div>
+      <!-- TODO: This should be its own component -->
+      <div class="row">
+        <p>You should probably punt, yeh plonker.</p>
       </div>
     </div>
   </div>
@@ -307,6 +314,16 @@ export default {
           {name: 'WAS'}
         ]
       }]
+    }
+  },
+  computed: {
+    outcome: function () {
+      return
+    }
+  },
+  methods: {
+    getPoisson (mu, k) {
+      return
     }
   }
 }

@@ -11,7 +11,7 @@
       <div class="row justify-content-center">
         <div class="col-2">
           <div class="form-group">
-            <label for="home">Home Team:</label>
+            <label for="home">Offense:</label>
             <select v-model="homeSelected">
               <option 
                 v-for="team in teamCodes"
@@ -25,7 +25,7 @@
         </div>
         <div class="col-2">
           <div class="form-group">
-            <label for="away">Away Team:</label>
+            <label for="away">Defense:</label>
             <select v-model="awaySelected">
               <option 
                 v-for="team in teamCodes"
@@ -65,12 +65,10 @@
             </select>
           </div>
         </div>
-        <!-- <div class="col-1"> 
-          <button type="button" class="btn btn-success">Go!</button>
-        </div> -->
       </div>
       <!-- TODO: This should be its own component -->
       <div class="row">
+        {{ probabilityOfConversion }}
         <p>You should probably punt, yeh plonker.</p>
       </div>
     </div>
@@ -94,7 +92,7 @@ export default {
       homeSelected: 'CHI',
       awaySelected: 'CHI',
       yardLine: 'Midfield',
-      yardsToGo: '5',
+      yardsToGo: 5,
       yards: [
         {name: '1', value: 1},
         {name: '2', value: 2},
@@ -317,13 +315,23 @@ export default {
     }
   },
   computed: {
-    outcome: function () {
-      return
+    probabilityOfConversion: function () {
+      return this.getPoissonMass(5.6, this.yardsToGo)
     }
   },
   methods: {
-    getPoisson (mu, k) {
-      return
+    factorial (n) {
+      let result = 1
+
+      while (n > 0) {
+        result *= n
+        n--
+      }
+
+      return result
+    },
+    getPoissonMass (lambda, k) {
+      return (Math.pow(Math.E, -lambda) * Math.pow(lambda, k)) / this.factorial(k)
     }
   }
 }

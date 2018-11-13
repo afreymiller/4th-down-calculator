@@ -7,6 +7,7 @@
         :key="division.id"
         :teams="division.teams"
       />
+      <!-- TODO: This whole row should be a component, probably several -->
       <div class="row">
         <div class="col-3">
           <div class="form-group">
@@ -243,10 +244,20 @@ export default {
       divisions: [{
         id: 1,
         teams: [
-          {name: 'ARI'},
           {
-            name: 'ATL', 
-            expP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}]},
+            name: 'ARI',
+            offYPP: 6.4,
+            defYPP: 6.6, 
+            offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
+            defEP: [{1: 1.2, 2: -0.1, 3: -0.4, 4: -1.0, 5: -1.2, 6: -1.7, 7: -2.0, 8: -2.5, 9: -2.9, 10: -3.3}]
+          },
+          {
+            name: 'ATL',
+            offYPP: 6.4,
+            defYPP: 6.6, 
+            offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
+            defEP: [{1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}]
+          },
           {
             name: 'BAL'
           },

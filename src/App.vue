@@ -38,7 +38,7 @@
         </div>
         <div class="col-3">
           <div class="form-group">
-            <label for="yardLine">Yard Line:</label>
+            <label for="yardLine">Position:</label>
             <select v-model="yardLine">
               <option 
                 v-for="yard in yardLines"
@@ -46,6 +46,20 @@
                 :value="yard.name"
               >
                 {{ yard.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <label for="yardsToGo">Yards to Go:</label>
+            <select v-model="yardsToGo">
+              <option 
+                v-for="yard in yards"
+                :key="yard.name"
+                :value="yard.value"
+              >
+                {{ yard.value }}
               </option>
             </select>
           </div>
@@ -72,6 +86,24 @@ export default {
       homeSelected: 'CHI',
       awaySelected: 'CHI',
       yardLine: 'Midfield',
+      yardsToGo: '5',
+      yards: [
+        {name: '1', value: 1},
+        {name: '2', value: 2},
+        {name: '3', value: 3}, 
+        {name: '4', value: 4},
+        {name: '5', value: 5},
+        {name: '6', value: 6},
+        {name: '7', value: 7},
+        {name: '8', value: 8},
+        {name: '9', value: 9},
+        {name: '10', value: 10},
+        {name: '11', value: 11},
+        {name: '12', value: 12},
+        {name: '13', value: 13},
+        {name: '14', value: 14},
+        {name: '15', value: 15}
+      ],
       yardLines: [
         {name: 'Own 1', toEndzone: 99},
         {name: 'Own 2', toEndzone: 98},

@@ -12,7 +12,7 @@
         <div class="col-2">
           <div class="form-group">
             <label for="home">Offense:</label>
-            <select v-model="homeSelected">
+            <select v-model="offenseSelected">
               <option 
                 v-for="team in teamCodes"
                 :key="team.name"
@@ -26,7 +26,7 @@
         <div class="col-2">
           <div class="form-group">
             <label for="away">Defense:</label>
-            <select v-model="awaySelected">
+            <select v-model="defenseSelected">
               <option 
                 v-for="team in teamCodes"
                 :key="team.name"
@@ -67,10 +67,8 @@
         </div>
       </div>
       <!-- TODO: This should be its own component -->
-      <div class="row">
-        {{ probabilityOfConversion }}
-        <p>You should probably punt, yeh plonker.</p>
-      </div>
+      <p>1st Down Conversion Probability: {{ probabilityOfConversion }}</p>
+      <p>You should probably punt, yeh plonker.</p>
     </div>
   </div>
 </template>
@@ -89,8 +87,8 @@ export default {
   },
   data () {
     return {
-      homeSelected: 'CHI',
-      awaySelected: 'CHI',
+      offenseSelected: 'CHI',
+      defenseSelected: 'CHI',
       yardLine: 'Midfield',
       yardsToGo: 5,
       yards: [

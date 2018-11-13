@@ -57,6 +57,8 @@ export default {
   },
   data () {
     return {
+      homeSelected: 'CHI',
+      awaySelected: 'CHI',
       teamCodes: [
         {name: 'CHI'},
         {name: 'DET'},

@@ -243,77 +243,57 @@ export default {
       divisions: [{
         id: 1,
         teams: [
+          {name: 'ARI'},
           {
-            name: 'CHI', 
+            name: 'ATL', 
             expP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}]},
           {
-            name: 'DET'
+            name: 'BAL'
           },
-          {name: 'GB'},
-          {name: 'MIN'}
+          {name: 'BUF'},
+          {name: 'CAR'},
+          {name: 'CHI'},
+          {name: 'CIN'},
+          {name: 'CLE'}
         ],
       },
-      { 
+      {
         id: 2,
         teams: [
-          {name: 'SF'},
-          {name: 'ARI'},
-          {name: 'LAR'},
-          {name: 'SEA'}
+          {name: 'DAL'},
+          {name: 'DEN'},
+          {name: 'DET'},
+          {name: 'GB'},
+          {name: 'HOU'},
+          {name: 'IND'},
+          {name: 'JAX'},
+          {name: 'KC'}
         ]
       },
       {
         id: 3,
         teams: [
-          {name: 'DAL'},
-          {name: 'PHI'},
+          {name: 'LAC'},
+          {name: 'LAR'},
+          {name: 'MIA'},
+          {name: 'MIN'},
+          {name: 'NE'},
+          {name: 'NO'},
           {name: 'NYG'},
-          {name: 'WAS'}
-        ]
-      },
-      {
-        id: 4,
-        teams: [
-          {name: 'TB'},
-          {name: 'ATL'},
-          {name: 'CAR'},
-          {name: 'NO'}
-        ]
-      },
-      {
-        id: 5,
-        teams: [
-          {name: 'IND'},
-          {name: 'TEN'},
-          {name: 'JAX'},
-          {name: 'HOU'}
+          {name: 'NYJ'}
         ],
       },
       { 
-        id: 6,
+        id: 4,
         teams: [
-          {name: 'NE'},
-          {name: 'MIA'},
-          {name: 'BUF'},
-          {name: 'NYJ'}
-        ]
-      },
-      {
-        id: 7,
-        teams: [
-          {name: 'DEN'},
           {name: 'OAK'},
-          {name: 'KC'},
-          {name: 'LAC'}
-        ]
-      },
-      {
-        id: 8,
-        teams: [
-          {name: 'BAL'},
+          {name: 'PHI'},
           {name: 'PIT'},
-          {name: 'CLE'},
-          {name: 'CIN'}
+          {name: 'SEA'},
+          {name: 'SF'},
+          {name: 'TB'},
+          {name: 'TEN'},
+          {name: 'WAS'}
         ]
       }]
     }

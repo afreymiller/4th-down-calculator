@@ -2,6 +2,7 @@
   <div id="app">
     <div class="container">
       <heading/>
+      <!-- TODO: Iterate over all of these instead of hard-coding -->
       <team-row
         :teams="teams.filter(e => e.division === 1)"
       />
@@ -21,7 +22,7 @@
             <label for="home">Offense:</label>
             <select v-model="offenseSelected">
               <option 
-                v-for="team in teamCodes"
+                v-for="team in teams"
                 :key="team.name"
                 :value="team.name"
               >
@@ -35,7 +36,7 @@
             <label for="away">Defense:</label>
             <select v-model="defenseSelected">
               <option 
-                v-for="team in teamCodes"
+                v-for="team in teams"
                 :key="team.name"
                 :value="team.name"
               >
@@ -75,6 +76,8 @@
       </div>
       <!-- TODO: This should be its own component -->
       <p>1st Down Conversion Probability: {{ probabilityOfConversion }}</p>
+      <p> {{ ifConversionGetOffensiveEP }}</p>
+      <!-- <p> {{ ifFailureGetDefensiveEP }} </p> -->
       <p>You should probably punt, yeh plonker.</p>
     </div>
   </div>
@@ -97,7 +100,7 @@ export default {
       offenseSelected: 'CHI',
       defenseSelected: 'CHI',
       yardLine: 'Midfield',
-      yardsToGo: 5,
+      yardsToGo: 11,
       yards: [
         {name: '1', value: 1},
         {name: '2', value: 2},
@@ -216,237 +219,262 @@ export default {
         {name: 'Opponent 2', toEndzone: 2},
         {name: 'Opponent 1', toEndzone: 1}
       ],
-      /* There shouldn't be a need for both team codes and divisions */
-      teamCodes: [
-        {name: 'CHI'},
-        {name: 'DET'},
-        {name: 'GB'},
-        {name: 'MIN'},
-        {name: 'SF'},
-        {name: 'ARI'},
-        {name: 'LAR'},
-        {name: 'SEA'},
-        {name: 'DAL'},
-        {name: 'PHI'},
-        {name: 'NYG'},
-        {name: 'WAS'},
-        {name: 'TB'},
-        {name: 'ATL'},
-        {name: 'CAR'},
-        {name: 'NO'},
-        {name: 'IND'},
-        {name: 'TEN'},
-        {name: 'JAX'},
-        {name: 'HOU'},
-        {name: 'NE'},
-        {name: 'MIA'},
-        {name: 'BUF'},
-        {name: 'NYJ'},
-        {name: 'DEN'},
-        {name: 'OAK'},
-        {name: 'KC'},
-        {name: 'LAC'},
-        {name: 'BAL'},
-        {name: 'PIT'},
-        {name: 'CLE'},
-        {name: 'CIN'}
-      ],
       teams: [
         {
           name: 'ARI',
           division: 1,
           offYPP: 6.4,
           defYPP: 6.6, 
-          offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
-          defEP: [{1: 1.2, 2: -0.1, 3: -0.4, 4: -1.0, 5: -1.2, 6: -1.7, 7: -2.0, 8: -2.5, 9: -2.9, 10: -3.3}]
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.2, 2: -0.1, 3: -0.4, 4: -1.0, 5: -1.2, 6: -1.7, 7: -2.0, 8: -2.5, 9: -2.9, 10: -3.3}
         },
         {
           name: 'ATL',
           division: 1,
           offYPP: 6.7,
           defYPP: 6.0, 
-          offEP: [{1: -1.3, 2: -0.8, 3: 1.2, 4: 1.7, 5: 2.1, 6: 2.5, 7: 2.7, 8: 2.9, 9: 3.2, 10: 4.0}],
-          defEP: [{1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}]
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'BAL',
           division: 1,
           offYPP: 5.8,
-          defYPP: 5.2
+          defYPP: 5.2,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'BUF',
           division: 1,
           offYPP: 5.2,
-          defYPP: 7.1
+          defYPP: 7.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'CAR',
           division: 1,
           offYPP: 7.5,
-          defYPP: 4.3
+          defYPP: 4.3,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'CHI',
           division: 1,
           offYPP: 7.4,
-          defYPP: 5.6
+          defYPP: 5.6,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'CIN',
           division: 1,
           offYPP: 5.6,
-          defYPP: 8.1
+          defYPP: 8.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'CLE',
           division: 1,
           offYPP: 4.9,
-          defYPP: 6.2
+          defYPP: 6.2,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'DAL',
           division: 2,
           offYPP: 5.6,
-          defYPP: 5.8
+          defYPP: 5.8,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'DEN',
           division: 2,
           offYPP: 4.2,
-          defYPP: 3.2
+          defYPP: 3.2,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'DET',
           division: 2,
           offYPP: 5.6,
-          defYPP: 5.2
+          defYPP: 5.2,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'GB',
           division: 2,
           offYPP: 5.8,
-          defYPP: 7.1
+          defYPP: 7.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'HOU',
           division: 2,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'IND',
           division: 2,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'JAX',
           division: 2,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'KC',
           division: 2,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'LAC',
           division: 3,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'LAR',
           division: 3,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'MIA',
           division: 3,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'MIN',
           division: 3,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'NE',
           division: 3,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'NO',
           division: 3,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'NYG',
           division: 3,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'NYJ',
           division: 3,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'OAK',
           division: 4,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'PHI',
           division: 4,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'PIT',
           division: 4,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'SEA',
           division: 4,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'SF',
           division: 4,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'TB',
           division: 4,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'TEN',
           division: 4,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         },
         {
           name: 'WAS',
           division: 4,
           offYPP: 5.9,
-          defYPP: 4.1
+          defYPP: 4.1,
+          offEP: {10: -1.3, 9: -0.8, 8: 1.2, 7: 1.7, 6: 2.1, 5: 2.5, 4: 2.7, 3: 2.9, 2: 3.2, 1: 4.0},
+          defEP: {1: 1.4, 2: -0.2, 3: -0.3, 4: -1.1, 5: -1.4, 6: -1.6, 7: -1.9, 8: -2.6, 9: -2.8, 10: -3.4}
         }
       ]
     }
@@ -461,8 +489,25 @@ export default {
 
       let lambda = (offense.offYPP * defense.defYPP) / LEAGUE_AVERAGE
       return this.getPoissonRightTail(lambda, this.yardsToGo)
+    },
+    ifConversionGetOffensiveEP: function () {
+      let [currYard] = this.yardLines.filter(e => e.name === this.yardLine)
+      let newYardage = currYard.toEndzone -= this.yardsToGo
+      let newBucket = Math.ceil(newYardage/10)
+
+      let [offense] = this.teams.filter(e => e.name === this.offenseSelected)
+      return offense.offEP[newBucket]
+    },
+    ifFailureGetDefensiveEP: function () {
+      let [currYard] = this.yardLines.filter(e => e.name === this.yardLine)
+      let newYardage = currYard.toEndzone -= this.yardsToGo
+      let newBucket = Math.ceil(newYardage/10)
+
+      let [offense] = this.teams.filter(e => e.name === this.offenseSelected)
+      return offense.defEP[newBucket]
     }
   },
+  
   methods: {
     factorial (n) {
       let result = 1

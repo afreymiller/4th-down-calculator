@@ -78,7 +78,11 @@
       <p>1st Down Conversion Probability: {{ probabilityConversionDisplay }}</p>
       <p>Conversion Expectation + Failure Expectation = {{ convertExpectationDisplay }} + {{ failureExpectationDisplay }}</p>
       <p> = {{ totalExpectationDisplay }} </p>
-      <p>{{ message }}</p>
+      <p
+        :class="messageColor"
+      >
+        {{ message }}
+      </p>
     </div>
   </div>
 </template>
@@ -499,6 +503,15 @@ export default {
     totalExpectation: function () {
       return this.convertExpectation + this.failureExpectation
     },
+    messageColor: function () {
+      if (this.totalExpectation < 0) {
+        return 'error'
+      }
+      if (this.totalExpectation < 0.3) {
+        return 'warning'
+      }
+      return 'success'
+    },
     totalExpectationDisplay: function () {
       return parseFloat(this.totalExpectation).toFixed(2)
     },
@@ -516,7 +529,7 @@ export default {
         return 'You should probably punt.'
       }
       if (this.totalExpectation < 0.3) {
-        return 'Proceed with caution.'
+        return 'Tread lightly.'
       }
       return 'Fortune favors the bold, go for it!'
     }
@@ -589,6 +602,18 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.warning {
+  color: orange;
 }
 
 a {

@@ -102,7 +102,7 @@ export default {
   data () {
     return {
       offenseSelected: 'CHI',
-      defenseSelected: 'CHI',
+      defenseSelected: 'MIN',
       yardLine: 'Midfield',
       yardsToGo: 11,
       yards: [

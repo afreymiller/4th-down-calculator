@@ -76,8 +76,8 @@
       </div>
       <!-- TODO: This should be its own component -->
       <p>1st Down Conversion Probability: {{ probabilityOfConversion }}</p>
-      <p> {{ ifConversionGetOffensiveEP }}</p>
-      <!-- <p> {{ ifFailureGetDefensiveEP }} </p> -->
+      <p> {{ ifConversionGetOffensiveEP(true) }}</p>
+      <p> {{ ifConversionGetOffensiveEP(false) }} </p>
       <p>You should probably punt, yeh plonker.</p>
     </div>
   </div>
@@ -489,22 +489,6 @@ export default {
 
       let lambda = (offense.offYPP * defense.defYPP) / LEAGUE_AVERAGE
       return this.getPoissonRightTail(lambda, this.yardsToGo)
-    },
-    ifConversionGetOffensiveEP: function () {
-      let [currYard] = this.yardLines.filter(e => e.name === this.yardLine)
-      let newYardage = currYard.toEndzone -= this.yardsToGo
-      let newBucket = Math.ceil(newYardage/10)
-
-      let [offense] = this.teams.filter(e => e.name === this.offenseSelected)
-      return offense.offEP[newBucket]
-    },
-    ifFailureGetDefensiveEP: function () {
-      let [currYard] = this.yardLines.filter(e => e.name === this.yardLine)
-      let newYardage = currYard.toEndzone -= this.yardsToGo
-      let newBucket = Math.ceil(newYardage/10)
-
-      let [offense] = this.teams.filter(e => e.name === this.offenseSelected)
-      return offense.defEP[newBucket]
     }
   },
   
@@ -518,6 +502,22 @@ export default {
       }
 
       return result
+    },
+    ifConversionGetOffensiveEP (worked) {
+      if (worked) {
+        let [currYard] = this.yardLines.filter(e => e.name === this.yardLine)
+        let newYardage = currYard.toEndzone - this.yardsToGo
+        let newBucket = Math.ceil(newYardage/10)
+
+        let [offense] = this.teams.filter(e => e.name === this.offenseSelected)
+        return offense.offEP[newBucket]
+      } else {
+        let [currYard] = this.yardLines.filter(e => e.name === this.yardLine)
+        let newBucket = Math.ceil(currYard.toEndzone/10)
+
+        let [offense] = this.teams.filter(e => e.name === this.offenseSelected)
+        return offense.defEP[newBucket]
+      }
     },
     getDiscretePoisson (lambda, k) {
       return (Math.pow(Math.E, -lambda) * Math.pow(lambda, k)) / this.factorial(k)

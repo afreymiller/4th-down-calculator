@@ -1,8 +1,8 @@
 <template>
   <div>
     <img 
-      height="70px"
-      width="70px"
+      height="50px"
+      width="50px"
       :src="srcPath"
     />
     <p>{{name}}</p>

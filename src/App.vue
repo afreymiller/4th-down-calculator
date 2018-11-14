@@ -75,9 +75,9 @@
         </div>
       </div>
       <!-- TODO: This should be its own component -->
-      <p>1st Down Conversion Probability: {{ probabilityOfConversion }}</p>
-      <p>Conversion Expectation + Failure Expectation = {{ convertExpectation }} + {{ failureExpectation }}</p>
-      <p> = {{ totalExpectation }} </p>
+      <p>1st Down Conversion Probability: {{ probabilityConversionDisplay }}</p>
+      <p>Conversion Expectation + Failure Expectation = {{ convertExpectationDisplay }} + {{ failureExpectationDisplay }}</p>
+      <p> = {{ totalExpectationDisplay }} </p>
       <p>{{ message }}</p>
     </div>
   </div>
@@ -498,6 +498,18 @@ export default {
     },
     totalExpectation: function () {
       return this.convertExpectation + this.failureExpectation
+    },
+    totalExpectationDisplay: function () {
+      return parseFloat(this.totalExpectation).toFixed(2)
+    },
+    probabilityConversionDisplay: function () {
+      return parseFloat(this.probabilityOfConversion).toFixed(2)
+    },
+    convertExpectationDisplay: function () {
+      return parseFloat(this.convertExpectation).toFixed(2)
+    },
+    failureExpectationDisplay: function () {
+      return parseFloat(this.failureExpectation).toFixed(2)
     },
     message: function () {
       if (this.totalExpectation < 0) {

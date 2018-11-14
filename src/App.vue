@@ -485,7 +485,7 @@ export default {
       let [defense] = this.teams.filter(e => e.name === this.defenseSelected)
 
       /* TODO: Get rid of this */
-      const LEAGUE_AVERAGE = 5.4
+      const LEAGUE_AVERAGE = 5.49
 
       let lambda = (offense.offYPP * defense.defYPP) / LEAGUE_AVERAGE
       return this.getPoissonRightTail(lambda, this.yardsToGo)

@@ -1,11 +1,16 @@
 <template>
-  <div>
-    <img 
-      height="50px"
-      width="50px"
-      :src="srcPath"
-    />
-    <p>{{name}}</p>
+  <div class="team-border row">
+    <div class="col-4">
+      <img 
+        height="50px"
+        width="50px"
+        :src="srcPath"
+      />
+      <p>{{name}}</p>
+    </div>
+    <div class="col-2">
+      <p>Other stats</p>
+    </div>
   </div>
 </template>
 
@@ -14,13 +19,24 @@ export default {
   props: {
     name: {
       type: String,
-      default: 'CHI'
+      default: ''
     }
   },
-  data () {
-    return {
-      srcPath: require('../assets/' + this.name + '.png')
+  // data () {
+  //   return {
+  //     srcPath: require('../assets/' + this.name + '.png')
+  //   }
+  // }
+  computed: {
+    srcPath: function () {
+      return require('../assets/' + this.name + '.png')
     }
   }
 }
 </script>
+
+<style lang="scss">
+.team-border {
+  border-style: dotted;
+}
+</style>

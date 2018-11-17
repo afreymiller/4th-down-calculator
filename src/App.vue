@@ -2,7 +2,13 @@
   <div id="app">
     <div class="container">
       <heading/>
-      <team-card/>
+      <div class="row">
+        <div class="col-3">
+          <team-card
+            :name="offenseSelected"
+          />
+        </div>
+      </div>
       <!-- TODO: Iterate over all of these instead of hard-coding -->
       <!--<team-row
         :teams="teams.filter(e => e.division === 1)"

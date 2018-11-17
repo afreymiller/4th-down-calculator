@@ -14,11 +14,7 @@ export default {
   props: {
     name: {
       type: String,
-      default: ''
-    },
-    path: {
-      type: String,
-      default: '../assets/CHI.png'
+      default: 'CHI'
     }
   },
   data () {

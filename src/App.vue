@@ -3,25 +3,17 @@
     <div class="container">
       <heading/>
       <div class="row">
-        <div class="col-3">
+        <div class="col-6">
           <team-card
             :name="offenseSelected"
           />
         </div>
+        <div class="col-6">
+          <team-card
+            :name="defenseSelected"
+          />
+        </div>
       </div>
-      <!-- TODO: Iterate over all of these instead of hard-coding -->
-      <!--<team-row
-        :teams="teams.filter(e => e.division === 1)"
-      />
-      <team-row
-        :teams="teams.filter(e => e.division === 2)"
-      />
-      <team-row
-        :teams="teams.filter(e => e.division === 3)"
-      />
-      <team-row
-        :teams="teams.filter(e => e.division === 4)"
-      />-->
       <!-- TODO: This whole row should be a component, probably several -->
       <div class="row justify-content-center">
         <div class="col-2">

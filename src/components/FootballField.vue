@@ -15,8 +15,12 @@ export default {
       ctx.fillStyle = 'blue'
       ctx.fillRect(0, 0, 40, 216)
       ctx.fillRect(440, 0, 480, 216)
+      ctx.fillStyle = '#006400'
+      for (let i = 3; i < 23; i+=2) {
+        ctx.fillRect(20*i, 0, 20, 216)
+      }
+
       ctx.strokeStyle='white'
-      // #013220
 
       for (let i = 2; i < 23; i++) {
         ctx.beginPath()

@@ -3,7 +3,7 @@
     <div class="container">
       <heading/>
       <!-- TODO: Make this its own component -->
-      <canvas id="myCanvas" width="480" height="216" style="border:1px solid #000000;"></canvas>
+      <football-field/>
       <div class="row">
         <div class="col-6">
           <team-card
@@ -89,16 +89,18 @@
 </template>
 
 <script>
-import TeamRow from './components/TeamRow.vue'
+import FootballField from './components/FootballField.vue'
 import Heading from './components/Heading.vue'
 import TeamCard from './components/TeamCard.vue'
+import TeamRow from './components/TeamRow.vue'
 
 export default {
   name: 'app',
   components: {
-    TeamRow,
+    FootballField,
     Heading,
-    TeamCard
+    TeamCard,
+    TeamRow
   },
   data () {
     return {

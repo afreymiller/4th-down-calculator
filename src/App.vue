@@ -2,6 +2,8 @@
   <div id="app">
     <div class="container">
       <heading/>
+      <!-- TODO: Make this its own component -->
+      <canvas id="myCanvas" width="480" height="216" style="border:1px solid #000000;"></canvas>
       <div class="row">
         <div class="col-6">
           <team-card

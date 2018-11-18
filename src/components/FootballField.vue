@@ -46,6 +46,22 @@ export default {
       ctx.fillText('30',312,190)
       ctx.fillText('20',352,190)
       ctx.fillText('10',392,190)
+
+      ctx.save()
+
+      ctx.rotate(Math.PI)
+      ctx.translate(-480,-72)
+      ctx.fillText('10',72,40)
+      ctx.fillText('20',112,40)
+      ctx.fillText('30',152,40)
+      ctx.fillText('40',192,40)
+      ctx.fillText('50',232,40)
+      ctx.fillText('40',272,40)
+      ctx.fillText('30',312,40)
+      ctx.fillText('20',352,40)
+      ctx.fillText('10',392,40)
+
+      ctx.restore()
     }
   },
   mounted: function (){

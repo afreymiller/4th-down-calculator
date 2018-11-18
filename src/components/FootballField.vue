@@ -35,31 +35,53 @@ export default {
         ctx.stroke()
       }
 
+      for (let i = 9; i < 88; i++) {
+        ctx.beginPath()
+        ctx.moveTo(5*i, 3)
+        ctx.lineTo(5*i, 8)
+        ctx.stroke()
+
+        ctx.beginPath()
+        ctx.moveTo(5*i, 75)
+        ctx.lineTo(5*i, 80)
+        ctx.stroke()
+
+        ctx.beginPath()
+        ctx.moveTo(5*i, 135)
+        ctx.lineTo(5*i, 140)
+        ctx.stroke()
+
+        ctx.beginPath()
+        ctx.moveTo(5*i, 207)
+        ctx.lineTo(5*i, 212)
+        ctx.stroke()
+      }
+
       ctx.fillStyle = "white"
       ctx.font = "15px Arial"
-      ctx.fillText('10',72,190)
-      ctx.fillText('20',112,190)
-      ctx.fillText('30',152,190)
-      ctx.fillText('40',192,190)
-      ctx.fillText('50',232,190)
-      ctx.fillText('40',272,190)
-      ctx.fillText('30',312,190)
-      ctx.fillText('20',352,190)
-      ctx.fillText('10',392,190)
+      ctx.fillText('10',72,201)
+      ctx.fillText('20',112,201)
+      ctx.fillText('30',152,201)
+      ctx.fillText('40',192,201)
+      ctx.fillText('50',232,201)
+      ctx.fillText('40',272,201)
+      ctx.fillText('30',312,201)
+      ctx.fillText('20',352,201)
+      ctx.fillText('10',392,201)
 
       ctx.save()
 
       ctx.rotate(Math.PI)
       ctx.translate(-480,-72)
-      ctx.fillText('10',72,40)
-      ctx.fillText('20',112,40)
-      ctx.fillText('30',152,40)
-      ctx.fillText('40',192,40)
-      ctx.fillText('50',232,40)
-      ctx.fillText('40',272,40)
-      ctx.fillText('30',312,40)
-      ctx.fillText('20',352,40)
-      ctx.fillText('10',392,40)
+      ctx.fillText('10',72,55)
+      ctx.fillText('20',112,55)
+      ctx.fillText('30',152,55)
+      ctx.fillText('40',192,55)
+      ctx.fillText('50',232,55)
+      ctx.fillText('40',272,55)
+      ctx.fillText('30',312,55)
+      ctx.fillText('20',352,55)
+      ctx.fillText('10',392,55)
 
       ctx.restore()
 

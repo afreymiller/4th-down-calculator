@@ -62,6 +62,18 @@ export default {
       ctx.fillText('10',392,40)
 
       ctx.restore()
+
+      ctx.strokeStyle='yellow'
+      ctx.beginPath()
+      ctx.moveTo(60, 0)
+      ctx.lineTo(60,216)
+      ctx.stroke()
+
+      ctx.strokeStyle='blue'
+      ctx.beginPath()
+      ctx.moveTo(85, 0)
+      ctx.lineTo(85,216)
+      ctx.stroke()
     }
   },
   mounted: function (){

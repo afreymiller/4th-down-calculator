@@ -3,7 +3,10 @@
     <div class="container">
       <heading/>
       <!-- TODO: Make this its own component -->
-      <football-field/>
+      <football-field
+        :line-of-scrimmage="yardLine"
+        :yards-to-go="yardsToGo"
+      />
       <div class="row">
         <div class="col-6">
           <team-card

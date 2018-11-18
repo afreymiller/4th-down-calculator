@@ -10,6 +10,21 @@ export default {
     endzoneColor: {
       type: String,
       default: 'blue'
+    },
+    lineOfScrimmage: {
+      type: String,
+      default: 'Midfield'
+    },
+    yardsToGo: {
+      type: Number,
+      default: 5
+    }
+  },
+  data () {
+    return {
+      yardMap: {
+        'Midfield': 50
+      }
     }
   },
   methods: {
@@ -91,6 +106,7 @@ export default {
       ctx.lineTo(60,216)
       ctx.stroke()
 
+      /* Render line of scrimmage */
       ctx.strokeStyle='blue'
       ctx.beginPath()
       ctx.moveTo(85, 0)
